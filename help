@@ -1,0 +1,127 @@
+/*
+ * Kenneth Burke
+ * Project 4
+ * 
+ */
+package prject.pkg4;
+import java.text.DecimalFormat;
+import java.util.Scanner;
+/**
+ *
+ * @author Kens computer
+ */
+public class Prject4 {
+
+    public static void main(String[] args) {
+        
+        double a;
+        double b;
+        double c;
+        double d;
+        double e;
+        double f;
+                
+        DecimalFormat df = new DecimalFormat(".##");
+            Scanner sc= new Scanner(System.in);
+            
+            System.out.println("Enter a: ");
+            String num = sc.next();
+            a = Double.parseDouble(num);
+
+            System.out.println("Enter b: ");
+            num =sc.next();
+            b = Double.parseDouble(num);
+            
+            System.out.println("Enter c: ");
+            num =sc.next();
+            c = Double.parseDouble(num);
+            
+            System.out.println("Enter d: ");
+            num =sc.next();
+            d = Double.parseDouble(num);
+            
+            System.out.println("Enter e: ");
+            num =sc.next();
+            e = Double.parseDouble(num);
+            
+            System.out.println("Enter f: ");
+            num =sc.next();
+            f = Double.parseDouble(num);
+            
+            LinearEquation le= new LinearEquation(a,b,c,d,e,f);
+            
+            if(le.isSolvable())
+            {
+                System.out.println(" X = " + df.format(le.getX()));
+                System.out.println(" Y = " + df.format(le.getY()));
+            }
+            else
+            {
+                System.out.println("The equation has no solution.");
+            }
+            
+            
+            
+
+    }
+    
+}
+class LinearEquation
+{
+    private final double a;
+    private final double b;
+    private final double c;
+    private final double d;
+    private final double e;
+    private final double f;
+    
+    public LinearEquation(double A, double B, double C, double D, double E, double F)
+    {
+        a=A;
+        b=B;
+        c=C;
+        d=D;
+        e=D;
+        f=F;
+    }
+    public double getA ()
+    {
+        return a;
+    }
+    public double getB()
+    {
+        return b;
+    }
+    public double getC()
+    {
+        return c;
+    }
+    public double getD()
+    {
+        return d;
+    }
+    public double getE()
+    {
+        return e;
+    }
+    public double getF()
+    {
+        return f;
+    }    
+    public boolean isSolvable()
+    {
+        return ((a*d) - (b*c)) != 0;
+    }
+    public double getX()
+    {
+        double numerator = ((e*d) -(b*f));
+        double denominator = ((a *d)- (b*c));
+        return numerator/denominator;
+    }
+    public double getY()
+    {
+        double numerator = ((a*f) -(e*c));
+        double denominator = ((a *d)- (b*c));
+        return numerator/denominator;
+    }
+}
